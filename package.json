@@ -1,0 +1,23 @@
+{
+  "name": "gestion_recette",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ehya-Ag/gestion-recettes-API.git.git"
+  },
+  "author": "Ehya-Ag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ehya-Ag/gestion-recettes-API.git/issues"
+  },
+  "homepage": "https://github.com/Ehya-Ag/gestion-recettes-API.git#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.0",
+    "mysql": "^2.18.1"
+  }
+}
