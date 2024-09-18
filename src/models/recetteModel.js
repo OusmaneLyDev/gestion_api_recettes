@@ -1,23 +1,33 @@
 const db = require('../config/database');
 
-const getAllRecettes = () => {
-  return db.query('SELECT * FROM recettes');
+// Récupérer toutes les recettes
+const getAllRecettes = async () => {
+  const [rows] = await db.query('SELECT * FROM recettes'); // Utilise destructuration pour obtenir les lignes de résultat
+  return rows; // Retourne les lignes de résultat
 };
 
-const getRecetteById = (id) => {
-  return db.query('SELECT * FROM recettes WHERE id = ?', [id]);
+// Récupérer une recette par son ID
+const getRecetteById = async (id) => {
+  const [rows] = await db.query('SELECT * FROM recettes WHERE id = ?', [id]);
+  return rows.length > 0 ? rows[0] : null; // Retourne la recette ou null si non trouvée
 };
 
-const createRecette = (titre, ingredient, type) => {
-  return db.query('INSERT INTO recettes (titre, ingredient, type) VALUES (?, ?, ?)', [titre, ingredient, type]);
+// Créer une nouvelle recette
+const createRecette = async (titre, ingredient, type) => {
+  const [result] = await db.query('INSERT INTO recettes (titre, ingredient, type) VALUES (?, ?, ?)', [titre, ingredient, type]);
+  return result.insertId; // Retourne l'ID de la recette créée
 };
 
-const updateRecette = (id, titre, ingredient, type) => {
-  return db.query('UPDATE recettes SET titre = ?, ingredient = ?, type = ? WHERE id = ?', [titre, ingredient, type, id]);
+// Mettre à jour une recette
+const updateRecette = async (id, titre, ingredient, type) => {
+  const [result] = await db.query('UPDATE recettes SET titre = ?, ingredient = ?, type = ? WHERE id = ?', [titre, ingredient, type, id]);
+  return result.affectedRows; // Retourne le nombre de lignes affectées
 };
 
-const deleteRecette = (id) => {
-  return db.query('DELETE FROM recettes WHERE id = ?', [id]);
+// Supprimer une recette
+const deleteRecette = async (id) => {
+  const [result] = await db.query('DELETE FROM recettes WHERE id = ?', [id]);
+  return result.affectedRows; // Retourne le nombre de lignes affectées
 };
 
 module.exports = {
