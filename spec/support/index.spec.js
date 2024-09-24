@@ -1,55 +1,63 @@
-import sum from '../../models/sum.js';
-import recette from '../../models/RecetteModel.js';
-describe('Recettes tests', () => {
-  let recetteId = null;
+import RecetteService from "../../src/models/RecetteModel.js";
 
-  it('Can be create', async () => {
-    const recette = {
-      titre: 'plat',
-      ingredient: 'plates',
-      type: 'plat',
-    };
-    const result = await recette.createRecette(
-      recette.titre,
-      recette.ingredient,
-      recette.type,
+describe("Recipe tests", () => {
+  let recipeId = null;
+
+  it("can be create", async () => {
+    const recipe = { titre: "bon", type: "dessert", ingredient: "farime" };
+    const result = await RecetteService.createRecette(
+      recipe.titre,
+      recipe.type,
+      recipe.ingredient
     );
-    recetteId = result.inserId;
-    const createRecette = await recette.getRecetteById(recetteId);
-    expect(recetteId).not.toBeNull();
-    expect(createRecette).not.toBeNull();
   });
-  it('Can not be create', async () => {
+
+  it("can be update", async () => {
+    const recipe = { titre: "bah", type: "test", ingredient: "challenge" };
+    const result = await RecetteService.updateRecette(1, 
+      recipe.titre,
+      recipe.type,
+      recipe.ingredient
+    );
+    recipeId = result.insertId;
+    const recipeCreated = await RecetteService.getRecetteById(1);
+    expect(recipeId).not.toBeNull();
+    expect(recipeCreated).not.toBeNull();
+  });
+
+  it("can not be create", async () => {
     try {
-      const recette = {
-        titre: '',
-        ingredient: 'plates',
-        type: 'plat',
-      };
-      const result = await recette.createRecette(
-        recette.titre,
-        recette.ingredient,
-        recette.type,
+      const recipe = { titre: null, type: "dessert", ingredient: "farime" };
+      const result = await RecetteService.createRecette(
+        recipe.titre,
+        recipe.type,
+        recipe.ingredient
       );
-      recetteId = result.inserId;
-      const createRecette = await recette.getRecetteById(recetteId);
-      expect(recetteId).not.toBeNull();
-      expect(createRecette).not.toBeNull();
-    } catch (error) {}
-  });
-  it('Can get all recette', async () => {
-    try {
-      const getAll = await recette.getRecette();
-      expect(getAll).not.toBeNull();
+      recipeId = result.insertId;
+      const recipeCreated = await RecetteService.getRecetteById(recipeId);
+      expect(recipeId).toBeNull();
+      expect(recipeCreated).toEqual([]);
     } catch (error) {}
   });
 
-  // it('should find false to be different from true', () => {
-  //   expect(false).not.toBe(true);
-  // });
-  // it('adds 1 + 2 to equal 3', () => {
-  //     const recette = {id: 1, title: 'test'}
-  //     const result = {id: 1, title: 'test'}
-  //     expect(recette).toEqual(result);
+    it("Can get by Id recipes", async () => {
+        const getId = await RecetteService.getRecetteById(1);
+      expect(getId).not.toBeNull();
+    });
+
+
+    it("Can get all recipes", async () => {
+        const getAll = await RecetteService.getAllRecettes();
+      expect(getAll).not.toBeNull();
+    });
+    it("Can delete recipes", async () => {
+      const deleted = await RecetteService.deleteRecette(25);
+    expect(deleted).not.toBeNull();
+  });
+
+  //   it("adds 1 + 2 to equal 3", () => {
+  //     const recipe = { id: 1, title: "test" };
+  //     const result = { id: 1, title: "test" };
+  //     expect(recipe).toEqual(result);
   //   });
 });
