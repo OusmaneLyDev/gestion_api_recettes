@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "jasmine",
-    "start": "nodemon index.js",
+    "start": "nodemon src/index.js",
     "lint": "eslint"
   },
   "repository": {
