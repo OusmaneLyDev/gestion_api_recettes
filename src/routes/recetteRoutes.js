@@ -9,4 +9,4 @@ router.put('/recettes/:id', RecetteController.updateRecette);
 router.post('/recettes', addRequestValidator, RecetteController.createRecette);
 router.delete('/recettes/:id',deleteRequestValidator, RecetteController.deleteRecette);
 
-export default router ;
+export default router;

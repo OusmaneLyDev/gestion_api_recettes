@@ -23,7 +23,7 @@ class RecetteController {
   }
 
   static async createRecette(req, res, next) {
-    console.log("bonjour"); 
+    console.log('bonjour');
     const { titre, ingredient, type } = req.body;
     try {
       const id = await RecetteService.createRecette(titre, ingredient, type);
@@ -37,7 +37,12 @@ class RecetteController {
     const { id } = req.params;
     const { titre, ingredient, type } = req.body;
     try {
-      const affectedRows = await RecetteService.updateRecette(id, titre, ingredient, type);
+      const affectedRows = await RecetteService.updateRecette(
+        id,
+        titre,
+        ingredient,
+        type,
+      );
       if (affectedRows === 0) {
         return res.status(404).json({ message: 'Recette non trouvée' });
       }
@@ -60,5 +65,4 @@ class RecetteController {
     }
   }
 }
-export default RecetteController
-
+export default RecetteController;
