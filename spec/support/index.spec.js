@@ -8,16 +8,17 @@ describe("Recipe tests", () => {
     const result = await RecetteService.createRecette(
       recipe.titre,
       recipe.type,
-      recipe.ingredient
+      recipe.ingredient,
     );
   });
 
   it("can be update", async () => {
     const recipe = { titre: "bah", type: "test", ingredient: "challenge" };
-    const result = await RecetteService.updateRecette(1, 
+    const result = await RecetteService.updateRecette(
+      1,
       recipe.titre,
       recipe.type,
-      recipe.ingredient
+      recipe.ingredient,
     );
     recipeId = result.insertId;
     const recipeCreated = await RecetteService.getRecetteById(1);
@@ -31,7 +32,7 @@ describe("Recipe tests", () => {
       const result = await RecetteService.createRecette(
         recipe.titre,
         recipe.type,
-        recipe.ingredient
+        recipe.ingredient,
       );
       recipeId = result.insertId;
       const recipeCreated = await RecetteService.getRecetteById(recipeId);
@@ -40,18 +41,17 @@ describe("Recipe tests", () => {
     } catch (error) {}
   });
 
-    it("Can get by Id recipes", async () => {
-        const getId = await RecetteService.getRecetteById(1);
-      expect(getId).not.toBeNull();
-    });
+  it("Can get by Id recipes", async () => {
+    const getId = await RecetteService.getRecetteById(1);
+    expect(getId).not.toBeNull();
+  });
 
-
-    it("Can get all recipes", async () => {
-        const getAll = await RecetteService.getAllRecettes();
-      expect(getAll).not.toBeNull();
-    });
-    it("Can delete recipes", async () => {
-      const deleted = await RecetteService.deleteRecette(25);
+  it("Can get all recipes", async () => {
+    const getAll = await RecetteService.getAllRecettes();
+    expect(getAll).not.toBeNull();
+  });
+  it("Can delete recipes", async () => {
+    const deleted = await RecetteService.deleteRecette(25);
     expect(deleted).not.toBeNull();
   });
 

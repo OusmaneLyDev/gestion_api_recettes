@@ -1,6 +1,6 @@
-import express from 'express';
-import router from './routes/recetteRoutes.js';
-import bodyParser from 'body-parser';
+import express from "express";
+import router from "./src/routes/recetteRoutes.js";
+import bodyParser from "body-parser";
 
 const app = express();
 const PORT = process.env.PORT || 3000;

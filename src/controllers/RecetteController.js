@@ -1,4 +1,4 @@
-import RecetteService from '../models/RecetteModel.js';
+import RecetteService from "../models/RecetteModel.js";
 class RecetteController {
   static async getAllRecettes(req, res, next) {
     try {
@@ -14,7 +14,7 @@ class RecetteController {
     try {
       const recette = await RecetteService.getRecetteById(id);
       if (!recette) {
-        return res.status(404).json({ message: 'Recette non trouvée' });
+        return res.status(404).json({ message: "Recette non trouvée" });
       }
       res.json(recette);
     } catch (error) {
@@ -23,7 +23,7 @@ class RecetteController {
   }
 
   static async createRecette(req, res, next) {
-    console.log('bonjour');
+    console.log("bonjour");
     const { titre, ingredient, type } = req.body;
     try {
       const id = await RecetteService.createRecette(titre, ingredient, type);
@@ -44,9 +44,9 @@ class RecetteController {
         type,
       );
       if (affectedRows === 0) {
-        return res.status(404).json({ message: 'Recette non trouvée' });
+        return res.status(404).json({ message: "Recette non trouvée" });
       }
-      res.json({ message: 'Recette mise à jour avec succès' });
+      res.json({ message: "Recette mise à jour avec succès" });
     } catch (error) {
       next(error);
     }
@@ -57,9 +57,9 @@ class RecetteController {
     try {
       const affectedRows = await RecetteService.deleteRecette(id);
       if (affectedRows === 0) {
-        return res.status(404).json({ message: 'Recette non trouvée' });
+        return res.status(404).json({ message: "Recette non trouvée" });
       }
-      res.json({ message: 'Recette supprimée avec succès' });
+      res.json({ message: "Recette supprimée avec succès" });
     } catch (error) {
       next(error);
     }
