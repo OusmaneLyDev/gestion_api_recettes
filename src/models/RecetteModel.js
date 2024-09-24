@@ -1,8 +1,6 @@
 import db from '../config/database.js';
 
 class RecetteService {
-  
-  // Récupérer toutes les recettes
   static async getAllRecettes() {
     try {
       const [rows] = await db.query('SELECT * FROM recettes');
@@ -12,8 +10,6 @@ class RecetteService {
       throw error;
     }
   }
-
-  // Récupérer une recette par ID
   static async getRecetteById(id) {
     try {
       const [rows] = await db.query('SELECT * FROM recettes WHERE id = ?', [id]);
@@ -23,8 +19,6 @@ class RecetteService {
       throw error;
     }
   }
-
-  // Créer une nouvelle recette
   static async createRecette(titre, ingredient, type) {
     try {
       const [result] = await db.query('INSERT INTO recettes (titre, ingredient, type) VALUES (?, ?, ?)', [titre, ingredient, type]);
@@ -34,8 +28,6 @@ class RecetteService {
       throw error;
     }
   }
-
-  // Mettre à jour une recette
   static async updateRecette(id, titre, ingredient, type) {
     try {
       const [result] = await db.query('UPDATE recettes SET titre = ?, ingredient = ?, type = ? WHERE id = ?', [titre, ingredient, type, id]);
@@ -45,8 +37,6 @@ class RecetteService {
       throw error;
     }
   }
-
-  // Supprimer une recette
   static async deleteRecette(id) {
     try {
       const [result] = await db.query('DELETE FROM recettes WHERE id = ?', [id]);
