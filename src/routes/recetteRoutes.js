@@ -1,5 +1,5 @@
-const express = require('express');
-const RecetteController = require('../controllers/recetteController');
+import express from 'express';
+import RecetteController from '../controllers/RecetteController.js';
 const router = express.Router();
 
 router.get('/recettes', RecetteController.getAllRecettes);
@@ -8,4 +8,4 @@ router.put('/recettes/:id', RecetteController.updateRecette);
 router.post('/recettes',  RecetteController.createRecette);
 router.delete('/recettes/:id', RecetteController.deleteRecette);
 
-module.exports = router;
+export default router ;

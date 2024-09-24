@@ -1,12 +1,13 @@
-const express = require('express');
-const recetteRoutes = require('./routes/recetteRoutes');
-const bodyParser = require('body-parser');
+import express from 'express';
+import router from "./routes/recetteRoutes.js";
+import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(recetteRoutes);
 app.use(bodyParser.json());
+app.use(router);
+
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);

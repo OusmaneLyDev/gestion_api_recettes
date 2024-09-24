@@ -1,6 +1,6 @@
 import { check, param, validationResult } from "express-validator";
 import { StatusCodes } from "http-status-codes";
-import { Recipe } from "../models/recetteModel.js";
+import  RecetteService from "../models/RecetteModel.js";
 
 const addRequestValidator = [
   check("titre")
@@ -12,7 +12,7 @@ const addRequestValidator = [
     .withMessage("Minimum 6 caractères requis!")
     .bail()
     .custom(async(value, { req }) => {
-        const result = await Recipe.checkRecipe(value)
+        const result = await RecetteService.checkRecipe(value)
         if(result !== 0){
             throw new Error('Cette recette existe déjà!')
         }
@@ -33,7 +33,7 @@ const deleteRequestValidator = [
       .withMessage("Id est obligatoire!")
       .bail()
       .custom(async(value, { req }) => {
-          const result = await Recipe.getRecipeById(value)
+          const result = await RecetteService.getRecipeById(value)
           if(result === 0){
               throw new Error("Cette recette n'existe pas!")
           }
