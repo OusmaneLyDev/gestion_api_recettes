@@ -4,15 +4,15 @@ services:
   app:
     env_file: .env
     image: gestion_recette_api
-    container_name: app_gestion_api
+    container_name: gestion_api
     build:
       context: .
-      dockerfile: dockerfile # Le nom de fichier Docker est sensible à la casse, assurez-vous qu'il est bien 'Dockerfile'
+      dockerfile: dockerfile
     ports:
-      - "3001:3000" # Spécifiez les ports entre guillemets
+      - "3000:3000"
     volumes:
-      - .:/app # Utilisez un chemin cohérent vers l'application dans le conteneur
-      - /app/node_modules # Assurez-vous que node_modules ne soit pas écrasé par les volumes
+      - .:/app
+      - /app/node_modules
     depends_on:
       - mysql_server
     networks:
@@ -22,19 +22,19 @@ services:
     image: mysql:8.0
     container_name: mysql_bd
     environment:
-      MYSQL_DATABASE: bd # Utilisez la syntaxe correcte pour les variables d'environnement
+      MYSQL_DATABASE: bd
       MYSQL_USER: user
       MYSQL_PASSWORD: secret
-      MYSQL_ROOT_PASSWORD: rootpassword # Ajout d'une variable ROOT obligatoire pour MySQL
+      MYSQL_ROOT_PASSWORD: rootpassword 
     ports:
-      - "3307:3306" # Port standard pour MySQL
+      - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql # Utilisation d'un volume pour la persistance des données
+      - mysql_data:/var/lib/mysql
     networks:
       - app-network
 
 volumes:
-  mysql_data: # Déclaration d'un volume pour la base de données
+  mysql_data:
 
 networks:
-  app-network: # Créez un réseau pour connecter l'application et la base de données
+  app-network:
