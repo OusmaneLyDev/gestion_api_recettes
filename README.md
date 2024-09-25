@@ -74,12 +74,13 @@ npm start
 L'API sera accessible à [http://localhost:3000](http://localhost:3000)
 
 - Exécution des tests unitaires
-Installer les dépendances de test
-Assurez-vous que jest ou un autre framework de test est installé :
-
-bash
-Copier le code
-npm install --save-dev jasmine
+- Installer le framwork
+```
+  npm install --save-dev jasmine
+```
+```
+  npm install --save-dev jasmine-spec-reporter
+```
 Exécuter les tests
 Lancez les tests avec la commande suivante :
 ```
@@ -88,13 +89,13 @@ npm test
 - Construction et lancement du conteneur Docker
 
 ```
-docker build --pull --rm -f "dockerfile" -t gestionrecetteapi:latest 
+docker compose -f "docker-compose.yml" up -d --build
 ```
 - Lancer le conteneur
 Une fois l'image construite, vous pouvez lancer le conteneur avec la commande suivante :
 
 ```
-docker run -d -p 3000:80 gestionrecetteapi:latest
+docker run -d -p 3000:80 gestion_recette_api:latest
 ```
 L'application sera disponible à http://localhost:3000.
 
