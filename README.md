@@ -44,12 +44,13 @@ http://localhost:3000/api/recettes/1
 ## Installation
 
 - Clonez le dépôt sur votre machine locale :
+- 
+```
+https://github.com/Ehya-Ag/gestion-recettes-API.git
+```
 
-    ```bash
-git clone https://github.com/username/gestion-recette-api.git
 ```
-```
-cd gestion-recette-api
+cd gestion-recette-API
 ```
 - Installer les dépendances
 ```
