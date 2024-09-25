@@ -79,7 +79,7 @@ Assurez-vous que jest ou un autre framework de test est installé :
 
 bash
 Copier le code
-npm install --save-dev jest
+npm install --save-dev jasmine
 Exécuter les tests
 Lancez les tests avec la commande suivante :
 ```
