@@ -4,7 +4,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "build": "echo 'No build step required for this project.'",
     "start": "nodemon index.js",
     "lint": "eslint .",
@@ -38,6 +38,8 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "globals": "^15.9.0",
+    "jasmine": "^5.3.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "prettier": "^3.3.3"
   }
 }
