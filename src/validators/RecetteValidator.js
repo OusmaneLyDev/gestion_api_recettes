@@ -35,7 +35,7 @@ const deleteRequestValidator = [
     .withMessage("Id est obligatoire!")
     .bail()
     .custom(async (value, { req }) => {
-      const result = await RecetteService.getRecipeById(value);
+      const result = await RecetteService.getRecetteById(value);
       if (result === 0) {
         throw new Error("Cette recette n'existe pas!");
       }

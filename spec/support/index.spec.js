@@ -4,7 +4,7 @@ describe("Recipe tests", () => {
   let recipeId = null;
 
   it("can be create", async () => {
-    const recipe = { titre: "bon", type: "dessert", ingredient: "farime" };
+    const recipe = { titre: "bon", type: "dessert", ingredient: "farime", id_categorie: 2 };
     const result = await RecetteService.createRecette(
       recipe.titre,
       recipe.type,
