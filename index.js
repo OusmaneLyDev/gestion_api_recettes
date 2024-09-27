@@ -6,15 +6,12 @@ import cors from "cors";
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: ["http://localhost:5173/"],
-    credentials: true,
-  }),
-);
+const corsOptions = {
+    origin: 'http://localhost:5173',
+};
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(router);
-app.use(cors());
 
 app.listen(PORT, () => {
   console.log(`Serveur démarré sur le port ${PORT}`);
