@@ -33,18 +33,18 @@ class RecetteService {
       throw error;
     }
   }
-  static async updateRecette(titre, ingredient, type, id_categorie) {
+  static async updateRecette(id, titre, ingredient, type, id_categorie) {
     try {
       const [result] = await db.query(
-        "UPDATE recettes SET titre = ?, ingredient = ?, type = ?, id_categorie = ?, WHERE id = ?",
-        [titre, ingredient, type, id_categorie, id],
+        "UPDATE recettes SET titre = ?, ingredient = ?, type = ?, id_categorie = ? WHERE id = ?",
+        [titre, ingredient, type, id_categorie, id]
       );
       return result.affectedRows;
     } catch (error) {
       console.error("Error updating recipe:", error.message);
       throw error;
     }
-  }
+  }  
   static async deleteRecette(id) {
     try {
       const [result] = await db.query("DELETE FROM recettes WHERE id = ?", [
@@ -97,7 +97,7 @@ class RecetteService {
       );
       return result.affectedRows;
     } catch (error) {
-      console.error("Error updating recipe:", error.message);
+      console.error("Error updating category:", error.message);
       throw error;
     }
   }
@@ -108,7 +108,7 @@ class RecetteService {
       ]);
       return result.affectedRows;
     } catch (error) {
-      console.error("Error deleting recipe:", error.message);
+      console.error("Error deleting category:", error.message);
       throw error;
     }
     checkRecipe;

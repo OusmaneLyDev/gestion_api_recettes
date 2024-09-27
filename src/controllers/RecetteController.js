@@ -84,7 +84,7 @@ class RecetteController {
     try {
       const recette = await RecetteService.getCategorieById(id);
       if (!recette) {
-        return res.status(404).json({ message: "Recette non trouvée" });
+        return res.status(404).json({ message: "categorie non trouvée" });
       }
       res.json(recette);
     } catch (error) {
@@ -107,9 +107,9 @@ class RecetteController {
     try {
       const affectedRows = await RecetteService.updateCategorie(id, nom);
       if (affectedRows === 0) {
-        return res.status(404).json({ message: "Recette non trouvée" });
+        return res.status(404).json({ message: "categorie non trouvée" });
       }
-      res.json({ message: "Recette mise à jour avec succès" });
+      res.json({ message: "categorie mise à jour avec succès" });
     } catch (error) {
       next(error);
     }
@@ -119,9 +119,9 @@ class RecetteController {
     try {
       const affectedRows = await RecetteService.deleteCategorie(id);
       if (affectedRows === 0) {
-        return res.status(404).json({ message: "Recette non trouvée" });
+        return res.status(404).json({ message: "categorie non trouvée" });
       }
-      res.json({ message: "Recette supprimée avec succès" });
+      res.json({ message: "categorie supprimée avec succès" });
     } catch (error) {
       next(error);
     }
