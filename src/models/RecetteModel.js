@@ -89,18 +89,19 @@ class RecetteService {
       throw error;
     }
   }
-  static async updateCategorie(nom) {
+  static async updateCategorie(id, nom) {
     try {
       const [result] = await db.query(
-        "UPDATE categories SET nom = ?, WHERE id = ?",
-        [nom, id],
+        "UPDATE categories SET nom = ? WHERE id = ?",
+        [nom, id]
       );
       return result.affectedRows;
     } catch (error) {
       console.error("Error updating category:", error.message);
       throw error;
     }
-  }
+}
+
   static async deleteCategorie(id) {
     try {
       const [result] = await db.query("DELETE FROM categories WHERE id = ?", [
