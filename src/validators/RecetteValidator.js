@@ -1,20 +1,20 @@
-import { check, param, validationResult } from "express-validator";
-import { StatusCodes } from "http-status-codes";
-import RecetteService from "../models/RecetteModel.js";
+import { check, param, validationResult } from 'express-validator';
+import { StatusCodes } from 'http-status-codes';
+import RecetteService from '../models/RecetteModel.js';
 
 const addRequestValidator = [
-  check("titre")
+  check('titre')
     .not()
     .isEmpty()
-    .withMessage("Titre ne peut pas être vide!")
+    .withMessage('Titre ne peut pas être vide!')
     .bail()
     .isLength({ min: 6 })
-    .withMessage("Minimum 6 caractères requis!")
+    .withMessage('Minimum 6 caractères requis!')
     .bail()
     .custom(async (value, { req }) => {
       const result = await RecetteService.checkRecipe(value);
       if (result !== 0) {
-        throw new Error("Cette recette existe déjà!");
+        throw new Error('Cette recette existe déjà!');
       }
       return true;
     }),
@@ -29,10 +29,10 @@ const addRequestValidator = [
 ];
 
 const deleteRequestValidator = [
-  param("id")
+  param('id')
     .not()
     .isEmpty()
-    .withMessage("Id est obligatoire!")
+    .withMessage('Id est obligatoire!')
     .bail()
     .custom(async (value, { req }) => {
       const result = await RecetteService.getRecetteById(value);
