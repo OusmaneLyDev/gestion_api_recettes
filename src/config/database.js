@@ -1,13 +1,24 @@
-import { createPool } from 'mysql2/promise';
-import dotenv from 'dotenv'; // Importation du module dotenv
-dotenv.config(); 
+import {createPool} from 'mysql2/promise';
+import dotenv from 'dotenv';
+dotenv.config()
 
-const db = createPool({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    connectTimeout: false
-});
+const db = createPool(
+    {
+        host: process.env.DB_HOST,
+        user: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DATABASE,
+        connectionLimit: 10
+    }
+)
+// const db = createPool(
+//     {
+//         host: 'localhost',
+//         user: 'test_user',
+//         password: 'password123',
+//         database: 'gestion_recette',
+//         connectionLimit: 10
+//     }
+// )
 
-export default db; // Exportation par défaut du pool de connexion
+export default  db;

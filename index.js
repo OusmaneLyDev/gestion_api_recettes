@@ -7,7 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
+<<<<<<< HEAD
   origin: 'http://localhost:5173',
+=======
+    origin: 'https://gestion-recettes-three.vercel.app',
+>>>>>>> 51b1d5bf0d2dfa667583c51e86bde563a22ee0f2
 };
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
