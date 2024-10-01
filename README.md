@@ -54,11 +54,11 @@ http://localhost:3000/api/recettes/1
 -
 
 ```
-https://github.com/Ehya-Ag/gestion-recettes-API.git
+https://github.com/OusmaneLyDev/gestion_api_recettes.git
 ```
 
 ```
-cd gestion-recette-API
+cd gestion-api_recette
 ```
 
 - Installer les dépendances
@@ -122,4 +122,4 @@ L'application sera disponible à http://localhost:3000.
 
 ## Auteur
 
-Projet réalisé en binôme par [Ehya Agg](https://github.com/Ehya-Ag) et [Ethman Ly](https://github.com/OusmaneLyDev).
+[Ethman Ly](https://github.com/OusmaneLyDev).

@@ -4,22 +4,16 @@ import {
   addRequestValidator,
   deleteRequestValidator,
 } from '../validators/RecetteValidator.js';
+
 const router = express.Router();
 
+// Routes pour les recettes
 router.get('/recettes', RecetteController.getAllRecettes);
 router.get('/recettes/:id', RecetteController.getRecetteById);
-router.put('/recettes/:id', RecetteController.updateRecette);
-router.post('/recettes', RecetteController.createRecette);
-router.delete(
-  '/recettes/:id',
-  deleteRequestValidator,
-  RecetteController.deleteRecette,
-);
-/*Route pour categories*/
-router.get('/categories', RecetteController.getAllCategories);
-router.get('/categorie/:id', RecetteController.getCategorieById);
-router.put('/categorie/:id', RecetteController.updateCategorie);
-router.post('/categories', RecetteController.createCategorie);
-router.delete('/categorie/:id', RecetteController.deleteCategorie);
+router.put('/recettes/:id', addRequestValidator, RecetteController.updateRecette);  // Utilisation du validateur pour PUT
+router.post('/recettes', addRequestValidator, RecetteController.createRecette);     // Utilisation du validateur pour POST
+router.delete('/recettes/:id', deleteRequestValidator, RecetteController.deleteRecette);
+
+
 
 export default router;

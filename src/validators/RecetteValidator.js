@@ -8,8 +8,8 @@ const addRequestValidator = [
     .isEmpty()
     .withMessage('Titre ne peut pas être vide!')
     .bail()
-    .isLength({ min: 6 })
-    .withMessage('Minimum 6 caractères requis!')
+    .isLength({ min: 5, max: 100 })
+    .withMessage('Le titre doit comporter entre 5 et 100 caractères!')
     .bail()
     .custom(async (value, { req }) => {
       const result = await RecetteService.checkRecipe(value);
@@ -18,6 +18,24 @@ const addRequestValidator = [
       }
       return true;
     }),
+
+      // Validation du champ 'ingredients'
+  check('ingredient')
+  .not()
+  .isEmpty()
+  .withMessage('Les ingrédients ne peuvent pas être vides!')
+  .bail()
+  .isLength({ min: 10, max: 500 })
+  .withMessage('Les ingrédients doivent comporter entre 10 et 500 caractères!'),
+
+// Validation du champ 'type'
+check('type')
+  .not()
+  .isEmpty()
+  .withMessage('Le type de recette est obligatoire!')
+  .bail()
+  .isIn(['entrée', 'plat', 'dessert'])
+  .withMessage("Le type de recette doit être l'une des valeurs suivantes : entrée, plat, dessert."),
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
