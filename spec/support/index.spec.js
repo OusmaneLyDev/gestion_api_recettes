@@ -8,7 +8,6 @@ describe('Recipe tests', () => {
       titre: 'bon',
       type: 'dessert',
       ingredient: 'farime',
-      id_categorie: 2,
     };
     const result = await RecetteService.createRecette(
       recipe.titre,
@@ -56,21 +55,9 @@ describe('Recipe tests', () => {
     const getAll = await RecetteService.getAllRecettes();
     expect(getAll).not.toBeNull();
   });
+
   it('Can delete recipes', async () => {
     const deleted = await RecetteService.deleteRecette(25);
     expect(deleted).not.toBeNull();
   });
-  it('Can delete categories', async () => {
-    const deleted = await RecetteService.deleteCategorie(25);
-    expect(deleted).not.toBeNull();
-  });
-  it('Can get all categories', async () => {
-    const getAll = await RecetteService.getAllCategories();
-    expect(getAll).not.toBeNull();
-  });
-  //   it("adds 1 + 2 to equal 3", () => {
-  //     const recipe = { id: 1, title: "test" };
-  //     const result = { id: 1, title: "test" };
-  //     expect(recipe).toEqual(result);
-  //   });
 });

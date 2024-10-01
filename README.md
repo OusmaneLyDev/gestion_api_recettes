@@ -95,7 +95,7 @@ L'API sera accessible à [http://localhost:3000](http://localhost:3000)
 ```
 
 ```
-  npm install --save-dev jasmine-spec-reporter
+  npm install --save-dev Eslint-spec-reporter
 ```
 
 Exécuter les tests
@@ -119,6 +119,10 @@ docker run -d -p 3000:80 gestion_recette_api:latest
 ```
 
 L'application sera disponible à http://localhost:3000.
+
+## Image DockerHub
+
+Vous pouvez accéder à l'image DockerHub [ici](https://hub.docker.com/r/lyouse/gestion_recette_api).
 
 ## Auteur
 
