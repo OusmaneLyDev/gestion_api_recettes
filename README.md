@@ -1,3 +1,5 @@
+
+
 # Gestion Recette API
 
 Cette API permet de gérer des recettes avec des opérations de création, de lecture, de mise à jour et de suppression (CRUD).
@@ -12,46 +14,80 @@ Avant de commencer, assurez-vous d'avoir installé :
 
 ## Endpoints de l'API
 
-Méthode Endpoint------------------------------Description
+**Récupérer toutes les recettes**
 
-- GET /api/recettes---------------------Récupère la liste de toutes les recettes.
-- GET /api/recettes/:id-----------------Récupère les détails d'une recette par ID.
-- POST /api/recettes---------------------------Crée une nouvelle recette.
+- Méthode : GET
+- Endpoint : /api/recettes
+- Description : Récupère la liste de toutes les recettes.
 
-- PUT /api/recettes/:id-------------------------Met à jour une recette par ID.
-
-- DELETE /api/recettes/:id-------------------Supprime une recette par ID.
-
-## Exemples de requêtes
-
-- Récupérer toutes les recettes
+Exemple de requête :
 
 ```
-http://localhost:3000/api/recettes
+GET http://localhost:3001/api/recettes
 ```
 
-- Créer une nouvelle recette
+**Récupérer une recette par ID**
+
+- Méthode : GET
+- Endpoint : /api/recettes/:id
+- Description : Récupère les détails d'une recette spécifique en fonction de son ID.
+
+Exemple de requête :
 
 ```
-http://localhost:3000/api/recettes \
+GET http://localhost:3001/api/recettes/1
 ```
 
-- Mettre à jour une recette
+**Créer une nouvelle recette**
+
+- Méthode : POST
+- Endpoint : /api/recettes
+- Description : Crée une nouvelle recette avec les données fournies dans le corps de la requête.
+
+Exemple de requête :
 
 ```
-http://localhost:3000/api/recettes/1 \
-```
+POST http://localhost:3001/api/recettes
 
-- Supprimer une recette
+{
+  "nom": "Pancakes",
+  "ingredients": "Farine, lait, œufs",
+  "type": "plat"
+}
+```
+**Mettre à jour une recette par ID**
+
+- Méthode : PUT
+- Endpoint : /api/recettes/:id
+- Description : Met à jour une recette spécifique en fonction de son ID
+
+Exemple de requête :
 
 ```
-http://localhost:3000/api/recettes/1
+PUT http://localhost:3001/api/recettes/1
+
+
+ {
+        "titre": "nouvelle recette5",
+        "ingredient": "Pâte brisée, Lardons",
+        "type": "plat"
+ }
+```
+**Supprimer une recette par ID**
+
+- Méthode : PUT
+- Endpoint : /api/recettes/:id
+- Description : Supprime une recette spécifique en fonction de son ID.
+
+Exemple de requête :
+
+```
+DELETE http://localhost:3001/api/recettes/1
 ```
 
 ## Installation
 
 - Clonez le dépôt sur votre machine locale :
--
 
 ```
 https://github.com/OusmaneLyDev/gestion_api_recettes.git
@@ -85,18 +121,10 @@ DB_PASSWORD=password
 npm start
 ```
 
-L'API sera accessible à [http://localhost:3000](http://localhost:3000)
+L'API sera accessible à [http://localhost:3001](http://localhost:3001)
 
 - Exécution des tests unitaires
-- Installer le framwork
 
-```
-  npm install --save-dev jasmine
-```
-
-```
-  npm install --save-dev Eslint-spec-reporter
-```
 
 Exécuter les tests
 Lancez les tests avec la commande suivante :
@@ -115,10 +143,10 @@ docker compose -f "docker-compose.yml" up -d --build
   Une fois l'image construite, vous pouvez lancer le conteneur avec la commande suivante :
 
 ```
-docker run -d -p 3000:80 gestion_recette_api:latest
+docker run -d -p 3001:80 gestion_recette_api:latest
 ```
 
-L'application sera disponible à http://localhost:3000.
+L'application sera disponible à http://localhost:3001.
 
 ## Image DockerHub
 

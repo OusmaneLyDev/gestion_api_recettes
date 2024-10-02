@@ -1,5 +1,5 @@
 FROM node:18
-WORKDIR /index
+WORKDIR /usr/index
 COPY package*.json ./
 RUN npm install
 COPY . .
