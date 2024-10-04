@@ -133,17 +133,21 @@ Lancez les tests avec la commande suivante :
 npm test
 ```
 
-- Construction et lancement du conteneur Docker
+- Construction de l'image:
 
 ```
-docker compose -f "docker-compose.yml" up -d --build
+docker build -t my-app .
 ```
 
-- Lancer le conteneur
-  Une fois l'image construite, vous pouvez lancer le conteneur avec la commande suivante :
+- Construire et Lancer les conteneurs avec Docker compose
 
 ```
-docker run -d -p 3001:80 gestion_recette_api:latest
+docker-compose up --build
+```
+- Lancer les conteneurs existants avec Docker compose :
+
+```
+docker-compose up -d
 ```
 
 L'application sera disponible à http://localhost:3001.
