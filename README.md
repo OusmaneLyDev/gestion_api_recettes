@@ -125,29 +125,18 @@ L'API sera accessible à [http://localhost:3001](http://localhost:3001)
 
 - Exécution des tests unitaires
 
-
 Exécuter les tests
+
 Lancez les tests avec la commande suivante :
 
 ```
 npm test
 ```
 
-- Construction de l'image:
-
-```
-docker build -t my-app .
-```
-
-- Construire et Lancer les conteneurs avec Docker compose
+- Construire l'image et Lancer les conteneurs Docker:
 
 ```
 docker-compose up --build
-```
-- Lancer les conteneurs existants avec Docker compose :
-
-```
-docker-compose up -d
 ```
 
 L'application sera disponible à http://localhost:3001.
